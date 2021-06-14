@@ -1,2 +1,2 @@
 # mobizi-node-rest
-Mobizi é uma plataforma para gerenciamento de locações.
+Mobizi é a plataforma para gerenciamento de locações.
