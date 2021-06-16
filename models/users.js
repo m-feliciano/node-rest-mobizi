@@ -4,7 +4,7 @@ const connection = require ('../infra/auth')
 class Users{
     add(users, res){
         
-        const sql = `INSERT INTO users(u_name, u_email, u_key) VALUES('${users.name}', '${users.email}', '${users.key}')`
+        const sql = `INSERT INTO users(cpf_client, email, pass) VALUES('${users.cpf_client}', '${users.email}', '${users.pass}')`
          
         connection.query(sql, users, (error) => {
         if(error){
@@ -12,7 +12,7 @@ class Users{
         }
         else{
             res.status(201).json(
-                {'1 row affeted, inserted user': users.name +', '+ users.email})
+                {'1 row affeted, inserted user': users.cpf_client +' '+  users.email})
         }
         })
             
@@ -44,9 +44,9 @@ class Users{
     }
     update(name, email, key, id,  res){
         const sql = `UPDATE users 
-                    SET u_name = ?,
-                    u_email = ?,
-                    u_key = ?
+                    SET name = ?,
+                    email = ?,
+                    pass = ?
                     WHERE id = ?`
 
         connection.query(sql, [name, email, key, id], (error, results) =>{
@@ -73,4 +73,4 @@ class Users{
 
 }
 
-module.exports = new Users
+module.exports = new Users()
