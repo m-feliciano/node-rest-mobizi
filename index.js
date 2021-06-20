@@ -1,7 +1,7 @@
 const express = require('express')
 const custom = require('./config/express')
 const mysql = require('mysql2')
-const Tables = require('./infra/Tables')
+const Tables = require('./infra/tables')
 const dotenv = require('dotenv')
 const path = require('path');
 
