@@ -1,4 +1,4 @@
-const Users = require('../model/users')
+const Users = require('../models/users')
 
 module.exports = app => {
     app.get('/home', (req, res) => {
