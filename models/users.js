@@ -1,4 +1,4 @@
-const connection = require ('../infra/auth')
+const connection = require ('../infra/database/conn')
 
 
 class Users{

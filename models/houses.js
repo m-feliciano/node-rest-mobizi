@@ -1,4 +1,4 @@
-const connection = require('../infra/auth')
+const connection = require('../infra/database/conn')
 const uploadFile = require('../files/uploadFiles')
 
 class House {

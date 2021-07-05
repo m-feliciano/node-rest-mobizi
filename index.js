@@ -1,12 +1,12 @@
 const express = require('express')
 const custom = require('./config/express')
 const mysql = require('mysql2')
-const Tables = require('./infra/tables')
+const Tables = require('./infra/database/tables')
 const dotenv = require('dotenv')
 const path = require('path');
 
 
-dotenv.config({path: './infra/.env'});
+dotenv.config({path: './infra/database/.env'});
 
 const connection = mysql.createConnection({
     host: process.env.DATABASE_HOST,

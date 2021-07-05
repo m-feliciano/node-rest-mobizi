@@ -1,15 +1,15 @@
 const Users = require('../models/users')
 
 module.exports = app => {
-    app.get('/home', (req, res) => {
+    app.get('/users', (req, res) => {
         Users.list(res)
         })
-    app.get('/home/:id', (req, res) => {
+    app.get('/users/:id', (req, res) => {
         const id = parseInt(req.params.id)
         Users.searchId(id, res)
     })  
 
-    app.patch('/home/:id', (req, res) => {
+    app.patch('/users/:id', (req, res) => {
         const id = parseInt(req.params.id)
         const name = req.body.name
         const email = req.body.email
@@ -20,12 +20,12 @@ module.exports = app => {
         Users.update(name, email, key,  id,  res)
     })
 
-    app.delete('/home/:id', (req, res) => {
+    app.delete('/users/:id', (req, res) => {
         const id = parseInt(req.params.id)
         Users.delete(id, res)
     })  
 
-    app.post('/home', (req, res) => {
+    app.post('/users', (req, res) => {
         const users = req.body
         Users.add(users, res)
     })
