@@ -1,18 +1,18 @@
 const connection = require ('../infra/database/conn')
 
 
-class Users{
-    add(users, res){
+class User {
+    add(user, res){
         
-        const sql = `INSERT INTO users(cpf_client, email, pass) VALUES('${users.cpf_client}', '${users.email}', '${users.pass}')`
+        const sql = `INSERT INTO users(cpf_client, email, pass) VALUES('${user.cpf_client}', '${user.email}', '${user.pass}')`
          
-        connection.query(sql, users, (error) => {
+        connection.query(sql, user, (error) => {
         if(error){
             res.status(400).json(error)
         }
         else{
             res.status(201).json(
-                {'1 row affeted, inserted user': users.cpf_client +' '+  users.email})
+                {'1 row affeted, inserted user': user.cpf_client +' '+  user.email})
         }
         })
             
@@ -42,14 +42,13 @@ class Users{
             }
         } )
     }
-    update(name, email, key, id,  res){
+    update(email, pass, id,  res){
         const sql = `UPDATE users 
-                    SET name = ?,
-                    email = ?,
+                    SET email = ?,
                     pass = ?
                     WHERE id = ?`
 
-        connection.query(sql, [name, email, key, id], (error, results) =>{
+        connection.query(sql, [email, pass, id], (error, results) =>{
             if(error){
                 res.status(400).json(error);
             }
@@ -73,4 +72,4 @@ class Users{
 
 }
 
-module.exports = new Users()
+module.exports = new User()

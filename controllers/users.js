@@ -1,32 +1,31 @@
-const Users = require('../models/users')
+const User = require('../models/users')
 
 module.exports = app => {
     app.get('/users', (req, res) => {
-        Users.list(res)
+        User.list(res)
         })
     app.get('/users/:id', (req, res) => {
         const id = parseInt(req.params.id)
-        Users.searchId(id, res)
+        User.searchId(id, res)
     })  
 
     app.patch('/users/:id', (req, res) => {
         const id = parseInt(req.params.id)
-        const name = req.body.name
         const email = req.body.email
-        const key = req.body.key
+        const pass = req.body.pass
 
-        console.log(name, email, key, id)
+        console.log(email, pass, id)
         
-        Users.update(name, email, key,  id,  res)
+        User.update(email, pass,  id,  res)
     })
 
     app.delete('/users/:id', (req, res) => {
         const id = parseInt(req.params.id)
-        Users.delete(id, res)
+        User.delete(id, res)
     })  
 
     app.post('/users', (req, res) => {
-        const users = req.body
-        Users.add(users, res)
+        const user = req.body
+        User.add(user, res)
     })
 }
